@@ -1,16 +1,18 @@
 import os
 import shutil
-
-
-def process_folder(root, input_folder_name='input', output_folder_name='output'):
+import random
+'''
+    给文件加前缀，并转移到指定文件夹等待划分训练集和验证集
+'''
+def process_folder(root_dir, input_folder_name='input', output_folder_name='output'):
     # 获取当前目录下所有的子文件夹
-    folders = os.listdir(root)
+    folders = os.listdir(root_dir)
 
     # 创建input和output文件夹
-    input_folder = os.path.join(root, input_folder_name)
+    input_folder = os.path.join(root_dir, input_folder_name)
     if not os.path.exists(input_folder):
         os.makedirs(input_folder)
-    output_folder = os.path.join(root, output_folder_name)
+    output_folder = os.path.join(root_dir, output_folder_name)
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
@@ -20,8 +22,8 @@ def process_folder(root, input_folder_name='input', output_folder_name='output')
     for folder in folders:
         if folder.startswith('.'):
             continue
-        images_folder = os.path.join(root, folder, 'images')
-        labels_folder = os.path.join(root, folder, 'labels')
+        images_folder = os.path.join(root_dir, folder, 'images')
+        labels_folder = os.path.join(root_dir, folder, 'labels')
         if not os.path.exists(images_folder) or not os.path.exists(labels_folder):
             continue
 
@@ -45,4 +47,4 @@ def process_folder(root, input_folder_name='input', output_folder_name='output')
 
 # 调用函数处理train和test文件夹
 process_folder(r"F:\DATA\blood-vessel-segmentation\train")
-process_folder(r"F:\DATA\blood-vessel-segmentation\test")
+
