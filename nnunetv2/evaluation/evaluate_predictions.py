@@ -252,12 +252,12 @@ def evaluate_simple_entry_point():
 
 
 if __name__ == '__main__':
-    folder_ref = '/media/fabian/data/nnUNet_raw/Dataset004_Hippocampus/labelsTr'
-    folder_pred = '/home/fabian/results/nnUNet_remake/Dataset004_Hippocampus/nnUNetModule__nnUNetPlans__3d_fullres/fold_0/validation'
-    output_file = '/home/fabian/results/nnUNet_remake/Dataset004_Hippocampus/nnUNetModule__nnUNetPlans__3d_fullres/fold_0/validation/summary.json'
+    folder_ref = '/home/user/Kaggle/Data/BloodVessel/nnUNet_raw/Dataset001_BloodVessel_2D/labelsTs'
+    folder_pred = '/home/user/Kaggle/Data/BloodVessel/nnUNetv2_predict_output'
+    output_file = '/home/user/Kaggle/Data/BloodVessel/nnUNetv2_predict_output/summary.json'
     image_reader_writer = SimpleITKIO()
-    file_ending = '.nii.gz'
-    regions = labels_to_list_of_regions([1, 2])
+    file_ending = '.tif'
+    regions = labels_to_list_of_regions([1, ]) #要计算评估指标的区域或标签列表
     ignore_label = None
     num_processes = 12
     compute_metrics_on_folder(folder_ref, folder_pred, output_file, image_reader_writer, file_ending, regions, ignore_label,

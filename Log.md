@@ -26,3 +26,44 @@ set nnUNet_results=F:\DATA\NnunetBloodVessel\nnUNet_results
 `Dataset001_BloodVessel_2D.py运行成功填充nnUNet_raw`  
 entry_points.txt中存放的是终端运行命令对应的模块  
 nnUNetv2_plan_and_preprocess -d 1 --verify_dataset_integrity
+## 12.6周三
+autodl上传文件后最最好是tar而不是rar，否则无法用tar命令解压缩  
+可以无卡模式启动，便宜  
+使用Autodl pandle和百度网盘连接加速文件上传，速度0.5m/s  
+`nnUNetv2_train 1 2d 0运行成功,不是完成，而是测试`   
+用vscode远程开发，git push到github，本地通过git pull拉取，实现信息交互  
+以后使用autodl不能在白天传数据，耗时较长，尽量选在晚上  
+为了测试kaggle需要数据集格式，尝试运行nnUNetv2_predict -i INPUT_FOLDER -o OUTPUT_FOLDER -d DATASET_NAME_OR_ID -c CONFIGURATION --save_probabilities  
+nnUNetv2_predict -i /home/user/Kaggle/Data/BloodVessel/nnUNet_raw/Dataset001_BloodVessel_2D/imagesTs -o /home/user/Kaggle/Data/BloodVessel/nnUNetv2_predict_output -d 1 -c 2d -chk checkpoint_best.pth -f 0 
+evaluate_predictions.py用于评估推理结果，pred和gt对比。  
+尝试修改predict_from_data_iterator直接得到RLE编码
+AutoDL老是上传中断，改变策略：直接上传
+## 12.8周五
+经过实验，不论用autodl自带的网页版终端还是vscede远程，上传到20G左右会中断，因为操作在夜间进行，具体原因不知  
+改变策略为：使用实验室服务器，或者将生数据进行拆分上传。
+使用 tar -xvf  nnUNet_preprocessed.tar -C .解压到指定目录（注意不要忘记-C）  
+迁移到实验室  
+使用ls ~/.ssh查看得知本机未配置git，以下为git配置命令记录： 
+git config --global user.name "kun-1010"  
+git config --global user.email "2393956270@qq.com"  
+ssh-keygen -t rsa -C "2393956270@qq.com"  
+ls ~/.ssh  
+cat ~/.ssh/id_rsa.pub  
+cd Kaggle  
+sudo git clone git@github.com:kun-1010/NnunetBloodVessel.git  
+ssh -T git@github.com  
+sudo git clone git@github.com:kun-1010/NnunetBloodVessel.git  
+cd NnunetBloodVessel  
+git status  
+为了便于避免在同一份代码上做改动而导致冲突或许可以用“同一台主机上的同一个git账户的不同分支”进行协作？  
+## 12.9周六
+预处理前的labal和预处理后的label数值不一致，导致肉眼误以为数据处理错误，具体原因参考visual_data.ipynb    
+使用tmux，可以断联服务器但是其中的进程不会终止  
+tmux new -s <session-name>创建指定名称会话  
+tmux attach-session -t <session-name>连接指定会话  
+tmux kill-session -t <session-name>结束指定会话  
+linux终端设置临时环境变量：  
+export nnUNet_raw="/home/user/Kaggle/Data/BloodVessel/nnUNet_raw"  
+export nnUNet_preprocessed="nnUNet_preprocessed=/home/user/Kaggle/Data/BloodVessel/nnUNet_preprocessed"  
+export nnUNet_results="/home/user/Kaggle/Data/BloodVessel/nnUNet_results"   
+

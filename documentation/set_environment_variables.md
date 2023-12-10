@@ -22,9 +22,9 @@ If you are using a different shell, such as zsh, you will need to find the corre
 ## Temporary
 Just execute the following lines whenever you run nnU-Net:
 ```bash
-export nnUNet_raw="/media/fabian/nnUNet_raw"
-export nnUNet_preprocessed="/media/fabian/nnUNet_preprocessed"
-export nnUNet_results="/media/fabian/nnUNet_results"
+export nnUNet_raw="/home/user/Kaggle/Data/BloodVessel/nnUNet_raw"
+export nnUNet_preprocessed="nnUNet_preprocessed=/home/user/Kaggle/Data/BloodVessel/nnUNet_preprocessed"
+export nnUNet_results="/home/user/Kaggle/Data/BloodVessel/nnUNet_results"
 ```
 (Of course you need to adapt the paths to the actual folders you intend to use).
 
