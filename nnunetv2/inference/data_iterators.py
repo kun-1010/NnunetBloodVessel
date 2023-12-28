@@ -41,7 +41,9 @@ def preprocess_fromfiles_save_to_queue(list_of_lists: List[List[str]],
             data = torch.from_numpy(data).contiguous().float()
 
             item = {'data': data, 'data_properties': data_properties,
-                    'ofile': output_filenames_truncated[idx] if output_filenames_truncated is not None else None}
+                    'ofile': output_filenames_truncated[idx] if output_filenames_truncated is not None else None,
+                    # 'name': list_of_lists[idx][0].split("/")[-1]}
+                    'name': list_of_lists[idx][0]}
             success = False
             while not success:
                 try:

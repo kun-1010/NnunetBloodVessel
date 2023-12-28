@@ -33,7 +33,7 @@ autodl上传文件后最最好是tar而不是rar，否则无法用tar命令解�
 `nnUNetv2_train 1 2d 0运行成功,不是完成，而是测试`   
 用vscode远程开发，git push到github，本地通过git pull拉取，实现信息交互  
 以后使用autodl不能在白天传数据，耗时较长，尽量选在晚上  
-为了测试kaggle需要数据集格式，尝试运行nnUNetv2_predict -i INPUT_FOLDER -o OUTPUT_FOLDER -d DATASET_NAME_OR_ID -c CONFIGURATION --save_probabilities  
+为了测试kaggle需要数据集格式，尝试运行  
 nnUNetv2_predict -i /home/user/Kaggle/Data/BloodVessel/nnUNet_raw/Dataset001_BloodVessel_2D/imagesTs -o /home/user/Kaggle/Data/BloodVessel/nnUNetv2_predict_output -d 1 -c 2d -chk checkpoint_best.pth -f 0 
 evaluate_predictions.py用于评估推理结果，pred和gt对比。  
 尝试修改predict_from_data_iterator直接得到RLE编码
@@ -66,4 +66,10 @@ linux终端设置临时环境变量：
 export nnUNet_raw="/home/user/Kaggle/Data/BloodVessel/nnUNet_raw"  
 export nnUNet_preprocessed="nnUNet_preprocessed=/home/user/Kaggle/Data/BloodVessel/nnUNet_preprocessed"  
 export nnUNet_results="/home/user/Kaggle/Data/BloodVessel/nnUNet_results"   
-
+## 12.10周日  
+kaggle上debug  
+## 12.11周一  
+kaggle上debug
+## 12.14周四   
+在Kaggle上太麻烦，转战vscode  
+visiual.ipynb中编写了rle编码和submission.csv
